@@ -1,0 +1,16 @@
+FROM mysql:latest
+
+# Set environment variables for the MySQL service
+ENV MYSQL_ROOT_PASSWORD=root_password \
+    MYSQL_USER=myuser \
+    MYSQL_PASSWORD=mypassword \
+    MYSQL_DATABASE=mydatabase
+
+# Copy the custom configuration file to the image
+COPY ./db/ /docker-entrypoint-initdb.d/
+
+# Copy the initialization script to the container
+COPY init.sql /docker-entrypoint-initdb.d/
+
+# Expose the default MySQL port
+EXPOSE 3306
