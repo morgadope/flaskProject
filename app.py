@@ -1,6 +1,5 @@
 from flask import Flask, make_response, jsonify, request
-
-from util import *
+from db.dbConfig import database_conn
 
 app = Flask(__name__)
 
